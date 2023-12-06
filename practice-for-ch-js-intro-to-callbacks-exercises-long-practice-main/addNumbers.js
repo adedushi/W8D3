@@ -14,15 +14,18 @@ function addNumbers(sum, numsLeft, completionCallback){
 
     if (numsLeft > 0) {
         reader.question("Enter a Number: ", function (answer) {
-            const somethingelse = parseInt(answer);
-        sum += somethingelse;
+        // const somethingelse = parseInt(answer);
+        // sum += somethingelse;
+        sum += parseInt(answer);
         console.log(sum);
-        addNumbers(sum, numsLeft - 1, completionCallback)
+        return addNumbers(sum, numsLeft - 1, completionCallback)
     });
 
     } else {
+        reader.close();
         return completionCallback(sum)
     }
 }
+
 
 addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
